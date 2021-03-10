@@ -5,7 +5,6 @@
 
 
 
-
-.bg-pink {
-  background: pink;
+html, body, #root {
+  height: 100%;
 }
