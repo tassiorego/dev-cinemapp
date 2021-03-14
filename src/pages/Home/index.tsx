@@ -2,14 +2,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import Input from '../../components/Input';
 import api from '../../services/api';
-
-type Movie = {
-  imdbID: string;
-  Title: string;
-  Year: string;
-  Type: string;
-  Poster: string;
-};
+import MovieCard, { Movie } from '../../components/MovieCard';
 
 const Home: React.FC = () => {
   const { register, handleSubmit } = useForm();
@@ -51,7 +44,7 @@ const Home: React.FC = () => {
           </h1>
         </div>
       </header>
-      <main>
+      <main className="container mx-auto p-4">
         <div className="">
           <p className="text-white text-center text-sm">
             Bem-vindo ao mundo espetácular do cinema
@@ -69,9 +62,11 @@ const Home: React.FC = () => {
             Pesquisar
           </button>
         </form>
-        {movies.map(movie => (
-          <p className="text-white">{movie.Title}</p>
-        ))}
+        <div className="w-full grid grid-cols-2 p-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6  gap-4">
+          {movies.map(movie => (
+            <MovieCard {...movie} />
+          ))}
+        </div>
       </main>
     </div>
   );
